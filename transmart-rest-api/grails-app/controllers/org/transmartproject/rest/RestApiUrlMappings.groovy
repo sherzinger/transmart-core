@@ -130,6 +130,30 @@ class RestApiUrlMappings {
             "/recommended_concepts/$conceptCode"(method: 'GET', controller: 'concept', action: 'showRecommended') {
                 apiVersion = 'v2'
             }
+            "/export/create"(method: 'GET', controller: 'restExport', action: 'create') {
+                apiVersion = "v2"
+            }
+             "/export/run/$jobName"(method: 'GET', controller: 'restExport', action: 'run') {
+                apiVersion = "v2"
+            }
+            "/export/download/$jobName"(method: 'GET', controller: 'restExport', action: 'download') {
+                apiVersion = "v2"
+            }
+            "/export/cancel/$jobName"(method: 'GET', controller: 'restExport', action: 'cancel') {
+                apiVersion = "v2"
+            }
+            "/export/status/$jobName"(method: 'GET', controller: 'restExport', action: 'status') {
+                apiVersion = "v2"
+            }
+            "/export/data_formats"(method: 'GET', controller: 'restExport', action: 'dataFormats') {
+                apiVersion = "v2"
+            }
+            "/export/file_formats"(method: 'GET', controller: 'restExport', action: 'fileFormats') {
+                apiVersion = "v2"
+            }
+//            "/export/test"(method: 'GET', controller: 'restExport', action: 'export') {
+//                apiVersion = "v2"
+//            }
         }
 
         group "/v1", {

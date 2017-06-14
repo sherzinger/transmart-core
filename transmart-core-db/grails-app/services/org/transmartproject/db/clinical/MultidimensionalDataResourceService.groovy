@@ -834,6 +834,26 @@ class MultidimensionalDataResourceService implements MultiDimensionalDataResourc
         def accessibleStudies = accessControlChecks.getDimensionStudiesForUser((DbUser) user)
         retrieveData(dataType, accessibleStudies, constraint: constraint)
     }
+
+    def retriveHighDimDataFormatsForSet(List<Integer> ids, User user){
+        List<ObservationFact> observations = highDimObservationList(assayConstraint, user,
+                type == 'autodetect' ? defaultHDModifierCriterion : HDModifierCriterionForType(type))
+
+        List assayIds = []
+        for(def o : observations) {
+            if(o.numberValue == null) throw new DataInconsistencyException("Observation row(s) found that miss the assayId")
+            assayIds.add(o.numberValue.toLong())
+        }
+
+        if (assayIds.empty){
+            return new EmptyHypercube()
+        }
+        List<AssayConstraint> oldAssayConstraints = [
+                highDimensionResourceService.createAssayConstraint([ids: assayIds] as Map, AssayConstraint.ASSAY_ID_LIST_CONSTRAINT)
+        ]
+
+        HighDimensionDataTypeResource typeResource
+    }
 }
 
 @TupleConstructor
