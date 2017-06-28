@@ -1,3 +1,4 @@
+//= require ../smartRApp.js
 //# sourceURL=correlation.js
 
 'use strict';

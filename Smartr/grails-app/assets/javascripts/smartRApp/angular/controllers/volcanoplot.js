@@ -1,3 +1,4 @@
+//= require ../smartRApp.js
 //# sourceURL=volcanoplot.js
 
 'use strict';

@@ -1,4 +1,6 @@
-/* override  jquery-ui stylings */
+/*
+*= require_tree .
+*/
 
 #sr-loading {
     position: fixed;

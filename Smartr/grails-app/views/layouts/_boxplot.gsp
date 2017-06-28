@@ -1,4 +1,3 @@
-
 <script type="text/ng-template" id="boxplot">
 
 <div ng-controller="BoxplotController">

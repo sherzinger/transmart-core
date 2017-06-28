@@ -20,6 +20,7 @@ dependencies {
     compile group: 'com.google.guava', name: 'guava', version: '16.0-dev-20140115-68c8348'
     runtime 'org.javassist:javassist:3.16.1-GA'
     compile project(':transmart-core-api')
+    assets 'com.craigburke.angular:angular-template-asset-pipeline:2.3.0'
 }
 
 assets {

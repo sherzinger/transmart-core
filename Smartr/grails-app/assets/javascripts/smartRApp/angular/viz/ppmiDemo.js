@@ -3,10 +3,7 @@
 'use strict';
 
 window.smartRApp.directive('ppmiDemo', [
-    'smartRUtils',
-    'rServeService',
-    '$rootScope',
-    function(smartRUtils, rServeService, $rootScope) {
+    function() {
 
         return {
             restrict: 'E',
@@ -14,7 +11,7 @@ window.smartRApp.directive('ppmiDemo', [
                 data: '=',
                 show: '='
             },
-            templateUrl: $rootScope.smartRPath +  '/js/smartr/_angular/templates/ppmidemo.html',
+            templateUrl: 'ppmidemoTemplate.html',
             link: function (scope, element) {
                 var vizDiv1 = element.find('#sr-ppmi-s1')[0];
                 var vizDiv2 = element.find('#sr-ppmi-s2')[0];

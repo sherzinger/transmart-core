@@ -4,8 +4,7 @@
 
 window.smartRApp.directive('preprocessButton', [
     'rServeService',
-    '$rootScope',
-    function(rServeService, $rootScope) {
+    function(rServeService) {
         return {
             restrict: 'E',
             scope: {
@@ -17,7 +16,9 @@ window.smartRApp.directive('preprocessButton', [
                 numberOfRows: '=?',
                 projection: '@?'
             },
-            templateUrl: $rootScope.smartRPath + '/js/smartr/_angular/templates/preprocessButton.html',
+            template:
+            '<input type="button" value="Preprocess" class="heim-action-button">' +
+            '<span style="padding-left: 10px;"></span>',
             link: function(scope, element) {
 
                 var template_btn = element.children()[0];

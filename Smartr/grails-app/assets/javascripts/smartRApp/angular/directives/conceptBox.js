@@ -3,9 +3,8 @@
 'use strict';
 
 window.smartRApp.directive('conceptBox', [
-    '$rootScope',
     '$http',
-    function($rootScope, $http) {
+    function($http) {
         return {
             restrict: 'E',
             scope: {
@@ -16,7 +15,20 @@ window.smartRApp.directive('conceptBox', [
                 max: '@',
                 type: '@'
             },
-            templateUrl: $rootScope.smartRPath +  '/js/smartr/_angular/templates/conceptBox.html',
+            template:
+            '<div class="heim-input-field heim-dropzone sr-hd-input">' +
+            '    <label style="display: inline;">{{label}} <i class="ui-icon ui-icon-info sr-tooltip-dialog" title="{{tooltip}}"> </i></label>' +
+            '    <br><br>' +
+            '    <span ng-show="instructionMinNodes" class="sr-instruction">Drag at least {{min}} node(s) into the box<br /></span>' +
+            '    <span ng-show="instructionMaxNodes" class="sr-instruction">Select at most {{max}} node(s)<br /></span>' +
+            '    <span ng-show="instructionNodeType" class="sr-instruction">Node(s) do not have the correct type<br /></span>' +
+            '    <span ng-show="instructionNodePlatform" class="sr-instruction">Nodes must have the same platform</span>' +
+            '    <div class="sr-drop-input" ng-class="{true:\'sr-drop-input-valid\', false:\'sr-drop-input-invalid\'}[conceptGroup.valid]" style="overflow-y:auto">' +
+                '    </div>' +
+            '    <div style="margin-top: 10px; text-align: right;">' +
+            '        <input type="button" value="Clear Window" class="sr-drop-btn">' +
+            '    </div>' +
+            '</div>',
             link: function(scope, element) {
                 var max = parseInt(scope.max);
                 var min = parseInt(scope.min);
@@ -115,19 +127,19 @@ window.smartRApp.directive('conceptBox', [
                 };
 
                 scope.$watchGroup([
-                    'instructionNodeType',
-                    'instructionNodePlatform',
-                    'instructionMaxNodes',
-                    'instructionMinNodes'],
+                        'instructionNodeType',
+                        'instructionNodePlatform',
+                        'instructionMaxNodes',
+                        'instructionMinNodes'],
                     function(newValue) {
                         var instructionNodeType = newValue[0],
                             instructionNodePlatform = newValue[1],
                             instructionMaxNodes = newValue[2],
                             instructionMinNodes = newValue[3];
                         scope.conceptGroup.valid = !(instructionNodeType ||
-                                                     instructionNodePlatform ||
-                                                     instructionMaxNodes ||
-                                                     instructionMinNodes);
+                        instructionNodePlatform ||
+                        instructionMaxNodes ||
+                        instructionMinNodes);
                     });
 
                 scope.validate();

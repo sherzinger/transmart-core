@@ -3,14 +3,16 @@
 'use strict';
 
 window.smartRApp.directive('workflowWarnings', [
-    '$rootScope',
-    function($rootScope) {
+    function() {
         return {
             restrict: 'E',
             scope: {
                 warnings: '='
             },
-            templateUrl: $rootScope.smartRPath +  '/js/smartr/_angular/templates/workflowWarnings.html',
+            template:
+            '<div class="sr-warning-box" ng-style="{\'visibility\': visibility}">' +
+            '    {{text}}' +
+            '</div>',
             link: function(scope) {
                 scope.$watch('warnings', function() {
                     scope.visibility = $.isEmptyObject(scope.warnings) ? 'hidden' : 'visible';

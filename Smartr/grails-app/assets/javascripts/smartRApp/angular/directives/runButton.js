@@ -3,10 +3,9 @@
 'use strict';
 
 window.smartRApp.directive('runButton', [
-    '$rootScope',
     'rServeService',
     'smartRUtils',
-    function($rootScope, rServeService, smartRUtils) {
+    function(rServeService, smartRUtils) {
         return {
             restrict: 'E',
             scope: {
@@ -18,7 +17,9 @@ window.smartRApp.directive('runButton', [
                 params: '=?argumentsToUse',
                 waitMessage: '@?'
             },
-            templateUrl: $rootScope.smartRPath + '/js/smartr/_angular/templates/runButton.html',
+            template:
+            '<input type="button" value="{{name}}" ng-disabled="disabled">' +
+            '<span style="padding-left: 10px;"></span>',
             link: function(scope, element) {
                 var params = scope.params ? scope.params : {};
                 if (!scope.waitMessage) {

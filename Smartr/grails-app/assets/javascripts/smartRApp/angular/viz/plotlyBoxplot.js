@@ -4,16 +4,14 @@
 
 window.smartRApp.directive('boxplot', [
     'smartRUtils',
-    'rServeService',
-    '$rootScope',
-    function(smartRUtils, rServeService, $rootScope) {
+    function(smartRUtils) {
 
     return {
         restrict: 'E',
         scope: {
             data: '='
         },
-        templateUrl: $rootScope.smartRPath +  '/js/smartr/_angular/templates/boxplot.html',
+        template: '<div id="visualisation"></div>',
         link: function (scope, element) {
             var vizDiv = element.children()[0];
             /**

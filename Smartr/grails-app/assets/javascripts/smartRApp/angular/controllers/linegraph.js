@@ -1,3 +1,4 @@
+//= require ../smartRApp.js
 //# sourceURL=linegraph.js
 
 'use strict';

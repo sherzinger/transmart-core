@@ -1,3 +1,4 @@
+//= require ../smartRApp.js
 //# sourceURL=patientmapper.js
 
 'use strict';

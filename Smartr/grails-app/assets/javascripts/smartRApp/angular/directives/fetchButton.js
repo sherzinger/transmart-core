@@ -3,10 +3,9 @@
 'use strict';
 
 window.smartRApp.directive('fetchButton', [
-    '$rootScope',
     'rServeService',
     'smartRUtils',
-    function($rootScope, rServeService, smartRUtils) {
+    function(rServeService, smartRUtils) {
         return {
             restrict: 'E',
             scope: {
@@ -24,7 +23,9 @@ window.smartRApp.directive('fetchButton', [
                 message: '=?',
                 hasPreprocessTab: '=?'
             },
-            templateUrl: $rootScope.smartRPath +  '/js/smartr/_angular/templates/fetchButton.html',
+            template:
+            '<input type="button" value="Fetch Data" class="heim-action-button" ng-disabled="disabled">' +
+            '<span style="padding-left: 10px;"></span>',
             link: function(scope, element) {
                 var template_btn = element.children()[0],
                     template_msg = element.children()[1];

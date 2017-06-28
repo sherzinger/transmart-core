@@ -1,3 +1,4 @@
+//= require ../smartRApp.js
 //# sourceURL=heatmap.js
 
 'use strict';

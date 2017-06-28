@@ -1,7 +1,8 @@
 <!doctype html>
 <html>
 <body>
-<asset:javascript src="manifest.js"/>
+<asset:javascript src="smartR.js"/>
+<asset:stylesheet src="smartR.css"/>
 
 <div id="sr-loading">Loading...</div>
 <div id="sr-index" data-ng-app="smartRApp" style="padding: 10px;">

@@ -12,7 +12,11 @@ class SmartrController {
         [scriptList: sessionService.availableWorkflows()]
     }
 
-    def abc() {
-        render "Hello World"
+    def loadScripts() {
+
+    }
+
+    def smartRContextPath() {
+        render servletContext.contextPath + pluginContextPath as String
     }
 }

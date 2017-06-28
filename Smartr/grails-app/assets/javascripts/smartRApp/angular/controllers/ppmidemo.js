@@ -1,3 +1,4 @@
+//= require ../smartRApp.js
 //# sourceURL=ppmidemo.js
 
 'use strict';
