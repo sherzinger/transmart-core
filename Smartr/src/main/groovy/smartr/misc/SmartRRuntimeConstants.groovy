@@ -25,6 +25,8 @@ class SmartRRuntimeConstants {
     private GrailsApplication grailsApplication
 
     File pluginScriptDirectory
+    File remoteScriptDirectoryDir
+    File baseDir
 
     void setPluginScriptDirectory(File dir) {
         assert dir.isDirectory()
@@ -32,8 +34,8 @@ class SmartRRuntimeConstants {
     }
 
     void setRemoteScriptDirectoryDir(Object dir) {
-        grailsApplication.config.smartR.remoteScriptDirectory = dir as File
-        remoteScriptDirectoryDir // for the side effects
+        this.remoteScriptDirectoryDir = dir as File
+        getRemoteScriptDirectoryDir() // for the side effects
     }
 
     /**
@@ -41,7 +43,7 @@ class SmartRRuntimeConstants {
      * (in the machine where Rserve is running).
      */
     File getRemoteScriptDirectoryDir() {
-        def dir = grailsApplication.config.smartR.remoteScriptDirectory as File
+        def dir = this.remoteScriptDirectoryDir
         if (!dir.absolute) {
             throw new RuntimeException("Invalid configuration: " +
                     "smartr.remoteScriptDirectory should be an absolute path," +
@@ -51,7 +53,7 @@ class SmartRRuntimeConstants {
     }
 
     File getBaseDir() {
-        def dir = grailsApplication.config.smartR.baseDir
+        def dir = this.baseDir
         if (!dir) {
             dir = File.createTempDir("smartr", ".baseDir");
             setBaseDir(dir)
@@ -60,7 +62,7 @@ class SmartRRuntimeConstants {
     }
 
     void setBaseDir(Object dir) {
-        grailsApplication.config.smartR.baseDir = dir as File
-        baseDir // for the side effects
+        this.baseDir = dir as File
+        getBaseDir() // for the side effects
     }
 }

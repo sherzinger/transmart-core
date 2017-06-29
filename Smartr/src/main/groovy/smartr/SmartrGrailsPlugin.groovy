@@ -49,6 +49,7 @@ SmartR is a grails plugin seeking to improve the visual analytics of the tranSMA
     // Online location of the plugin's browseable source code.
 //    def scm = [ url: "http://svn.codehaus.org/grails-plugins/" ]
 
+    @Override
     Closure doWithSpring() { {->
         // Scan for components
         xmlns context:"http://www.springframework.org/schema/context"
@@ -61,6 +62,7 @@ SmartR is a grails plugin seeking to improve the visual analytics of the tranSMA
     }
     }
 
+    @Override
     void doWithDynamicMethods() {
         // TODO Implement registering dynamic methods to classes (optional)
     }
@@ -113,6 +115,7 @@ SmartR is a grails plugin seeking to improve the visual analytics of the tranSMA
         return true
     }
 
+    @Override
     void doWithApplicationContext() {
         log.info "Initialising SmartR ..."
 
@@ -167,17 +170,20 @@ SmartR is a grails plugin seeking to improve the visual analytics of the tranSMA
         log.info "SmartR initialised."
     }
 
+    @Override
     void onChange(Map<String, Object> event) {
         // TODO Implement code that is executed when any artefact that this plugin is
         // watching is modified and reloaded. The event contains: event.source,
         // event.application, event.manager, event.ctx, and event.plugin.
     }
 
+    @Override
     void onConfigChange(Map<String, Object> event) {
         // TODO Implement code that is executed when the project configuration changes.
         // The event is the same as for 'onChange'.
     }
 
+    @Override
     void onShutdown(Map<String, Object> event) {
         // TODO Implement code that is executed when the application shuts down (optional)
     }
