@@ -1,6 +1,7 @@
 package smartr
 
 import grails.validation.Validateable
+import grails.converters.JSON
 import smartr.session.SessionService
 import smartr.tasks.TaskResult
 import org.transmartproject.core.exceptions.InvalidArgumentsException
@@ -28,9 +29,8 @@ class ScriptExecutionController {
                         runCommand.sessionId,
                         runCommand.taskType,)
 
-        render(contentType: 'text/json') {
-            [executionId: executionId.toString()]
-        }
+        def payload = [executionId: executionId.toString()]
+        render payload as JSON
     }
 
     def status(StatusCommand statusCommand) {
@@ -55,13 +55,8 @@ class ScriptExecutionController {
                     artifacts: res.artifacts,
             ]
         }
-
-        render(contentType: 'text/json') {
-            [
-                    state : status.state.toString(),
-                    result: resultValue
-            ]
-        }
+        def payload = [state : status.state.toString(), result: resultValue]
+        render payload as JSON
     }
 
     def downloadFile(DownloadCommand downloadCommand) {

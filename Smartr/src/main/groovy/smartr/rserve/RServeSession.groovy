@@ -17,7 +17,7 @@ import java.util.concurrent.locks.ReentrantLock
 class RServeSession implements DisposableBean {
 
     @Value('#{sessionId}')
-    String sessionId
+    UUID sessionId
 
     @Autowired
     RConnectionProvider rConnectionProvider

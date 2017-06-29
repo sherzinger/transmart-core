@@ -1,5 +1,6 @@
 package smartr
 
+import grails.converters.JSON
 import smartr.session.SessionService
 import org.transmartproject.core.exceptions.InvalidArgumentsException
 
@@ -28,9 +29,8 @@ class RSessionController {
                 json.workflow)
 
         response.status = 201
-        render(contentType: 'text/json') {
-            [sessionId: sessionId.toString()]
-        }
+        def payload = [sessionId: sessionId.toString()]
+        render payload as JSON
     }
 
     def touch() {
